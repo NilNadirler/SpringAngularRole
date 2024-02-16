@@ -90,7 +90,7 @@ public class AuthanticationController {
 		  );
 		
 		response.addHeader("Access-Control-Expose-Headers", "Authorization");
-		response.addHeader("Access-Control-Allow-Headers", "Authorization, X-PINGGOTHER, Origin, X-Requested-With,Content-Type,Accept,X-Customheader");
+		response.addHeader("Access-Control-Allow-Headers", "Authorization, X-PINGGOTHER, Origin, X-Requested-With,Content-Type,Accept,X-Custom-header");
 		response.addHeader(TOKEN_PREFIX,jwt);
 		  
 	}
