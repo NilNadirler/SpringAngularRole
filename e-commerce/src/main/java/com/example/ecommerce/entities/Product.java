@@ -6,6 +6,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.example.ecommerce.dto.ProductDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -101,6 +102,7 @@ public class Product {
 		productDto.setDescription(description);
 		productDto.setByteImg(img);
 		productDto.setCategoryId(category.getId());
+		productDto.setCategoryName(category.getName());
 		
 		return productDto;
 	}

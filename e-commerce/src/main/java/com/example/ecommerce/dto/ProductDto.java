@@ -2,6 +2,8 @@ package com.example.ecommerce.dto;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.persistence.Lob;
+
 public class ProductDto {
 
 	  private Long id;
@@ -13,11 +15,15 @@ public class ProductDto {
 		
 		private Long price;
 		
+		
 		private byte byteImg[];
 		
 		private Long categoryId;
 		
 		private MultipartFile img;
+		
+		private String categoryName;
+		
 		
 		
 		
@@ -76,6 +82,14 @@ public class ProductDto {
 
 		public void setImg(MultipartFile img) {
 			this.img = img;
+		}
+
+		public String getCategoryName() {
+			return categoryName;
+		}
+
+		public void setCategoryName(String categoryName) {
+			this.categoryName = categoryName;
 		}
 
 		
