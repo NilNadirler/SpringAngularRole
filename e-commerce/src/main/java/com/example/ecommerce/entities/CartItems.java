@@ -51,6 +51,7 @@ public class CartItems {
 		cartDto.setUserId(user.getId());
 		cartDto.setProductName(product.getName());
 		cartDto.setReturnedImg(product.getImg());
+		cartDto.setOrderId(order.getId());
 		
 		return cartDto;
 	}

@@ -1,6 +1,6 @@
 package com.example.ecommerce.dto;
 
-
+import jakarta.persistence.Lob;
 
 public class CartItemsDto {
    

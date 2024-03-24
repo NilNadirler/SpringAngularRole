@@ -1,5 +1,6 @@
 package com.example.ecommerce.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -42,8 +43,23 @@ public class OrderDto {
 	
 	private String userName;
 	
+	private String couponName;
 	
-	private List<CartItemsDto>cartItems;
+	private List<CartItemsDto>cartItems =new ArrayList<CartItemsDto>();
+	
+	
+	public String getCouponName() {
+		return couponName;
+	}
+	
+	
+
+
+	public void setCouponName(String couponName) {
+		this.couponName = couponName;
+	}
+
+
 
 
 	public Long getId() {

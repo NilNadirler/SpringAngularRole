@@ -16,8 +16,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="products")
 public class Product {
 
 	
@@ -30,8 +32,7 @@ public class Product {
 	private Long price;
 	
 	private String description;
-	@Lob
-    @Column(columnDefinition="longblob")
+
 	private byte[] img;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional =false)

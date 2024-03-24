@@ -22,9 +22,17 @@ import com.example.ecommerce.service.CategoryService;
 public class AdminController {
 
 	
-	@Autowired
-	private CategoryService adminService;
+
+	private final CategoryService adminService;
 	
+	
+	
+	public AdminController(CategoryService adminService) {
+		super();
+		this.adminService = adminService;
+	}
+
+
 	@PostMapping("/category")
 	public ResponseEntity<Category>createCategory(@RequestBody CategoryDto categoryDto){
 		Category category = adminService.createCategory(categoryDto);

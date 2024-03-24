@@ -7,6 +7,6 @@ import com.example.ecommerce.enums.OrderStatus;
 
 public interface OrderRepository extends JpaRepository<Order,Long> {
 	
-	Order findByUserIdAndOrderStatus(Long userId, OrderStatus orderStatus);
+	  Order findByUserIdAndOrderStatus(Long userId, OrderStatus orderStatus);
 
 }

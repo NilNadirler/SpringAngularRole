@@ -5,8 +5,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import com.example.ecommerce.dto.OrderDto;
 import com.example.ecommerce.enums.OrderStatus;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -18,6 +20,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 
 
@@ -34,8 +37,8 @@ public class Order {
 	private String orderDescription;
 	
 	private Date date;
-	
-	private Long amount;
+
+	private Long amount =0L;
 	
 	private String address;
 	
@@ -44,19 +47,54 @@ public class Order {
 	@Enumerated(EnumType.STRING)
 	private OrderStatus orderStatus;
 	
-	private Long totalAmount;
+	
+	private Long totalAmount =0L;
 	
 	private Long discount;
 	
 	private UUID trackingId;
 	
 	
+	public Coupon getCoupon() {
+		return coupon;
+	}
+
+
+	public void setCoupon(Coupon coupon) {
+		this.coupon = coupon;
+	}
+
 	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name="user_id", referencedColumnName="id")
 	private User user;
 	
+	@OneToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name="coupon_id", referencedColumnName="id")
+	private Coupon coupon;
+	
+	@OrderBy("id ASC")
 	@OneToMany(fetch= FetchType.LAZY, mappedBy="order")
 	private List<CartItems>cartItems;
+	
+	public OrderDto orderDto(){
+		
+		OrderDto orderDto = new OrderDto();
+		
+		orderDto.setId(id);
+		orderDto.setAmount(amount);
+		orderDto.setAddress(address);
+		orderDto.setDate(date);
+		orderDto.setOrderStatus(orderStatus);
+		orderDto.setTrackingId(trackingId);
+		orderDto.setTotalAmount(totalAmount);
+		orderDto.setOrderDescription(orderDescription);
+		if(coupon!=null) {
+			orderDto.setCouponName(coupon.getName());
+		}
+		
+		return orderDto;
+		
+	}
 
 	
 	public Long getId() {
