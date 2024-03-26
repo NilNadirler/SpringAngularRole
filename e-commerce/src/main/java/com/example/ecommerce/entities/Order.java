@@ -88,6 +88,7 @@ public class Order {
 		orderDto.setTrackingId(trackingId);
 		orderDto.setTotalAmount(totalAmount);
 		orderDto.setOrderDescription(orderDescription);
+		orderDto.setUserName(user.getName());
 		if(coupon!=null) {
 			orderDto.setCouponName(coupon.getName());
 		}

@@ -196,7 +196,7 @@ public class CartItemService {
 			activeOrder.setOrderDescription(placeOrderDto.getOrderDescription());
 			activeOrder.setAddress(placeOrderDto.getAddress());
 			activeOrder.setDate(new Date());
-			activeOrder.setOrderStatus(OrderStatus.Pending);
+			activeOrder.setOrderStatus(OrderStatus.Placed);
 			activeOrder.setTrackingId(UUID.randomUUID());
 			
 			orderRepository.save(activeOrder);
