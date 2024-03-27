@@ -24,7 +24,7 @@ public class ProductDto {
 		
 		private String categoryName;
 		
-		
+		private Long quantity;
 		
 		
 
@@ -90,6 +90,14 @@ public class ProductDto {
 
 		public void setCategoryName(String categoryName) {
 			this.categoryName = categoryName;
+		}
+
+		public Long getQuantity() {
+			return quantity;
+		}
+
+		public void setQuantity(Long quantity) {
+			this.quantity = quantity;
 		}
 
 		

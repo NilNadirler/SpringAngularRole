@@ -45,7 +45,7 @@ public class OrderDto {
 	
 	private String couponName;
 	
-	private List<CartItemsDto>cartItems =new ArrayList<CartItemsDto>();
+	private List<CartItemsDto>cartItems;
 	
 	
 	public String getCouponName() {
@@ -172,14 +172,20 @@ public class OrderDto {
 	}
 
 
+
+
 	public List<CartItemsDto> getCartItems() {
 		return cartItems;
 	}
 
 
+
+
 	public void setCartItems(List<CartItemsDto> cartItems) {
 		this.cartItems = cartItems;
 	}
+
+
 
 
 
