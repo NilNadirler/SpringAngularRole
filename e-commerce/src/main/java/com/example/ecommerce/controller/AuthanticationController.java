@@ -1,6 +1,9 @@
 package com.example.ecommerce.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,11 +84,30 @@ public class AuthanticationController {
 		User user = userRepository.findFirstByEmail(authenticaionRequest.getUsername());
 		final String jwt = jwtUtil.generateToken(authenticaionRequest.getUsername());
 		 //return new AuthenticationResponse(jwt);
+
 		
-		response.getWriter().write(new JSONObject()
+		String expirationDate= jwtUtil.extractExpiration(jwt).toString();
+		 String input = expirationDate;
+	        String outputPattern = "yyyy-MM-dd'T'HH:mm:ss";
+	        String output = "";
+
+	        try {
+	            SimpleDateFormat inputFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+	            Date date = inputFormat.parse(input);
+
+	            SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+	             output = outputFormat.format(date);
+
+	            System.out.println(output);
+	        } catch (ParseException e) {
+	            e.printStackTrace();
+	        }
+	    
+		  response.getWriter().write(new JSONObject()
 		  .put("userId", user.getId())
 		  .put("role", user.getUserRole())
 		  .put("token", jwt)
+		  .put("expirationDate", output)
 		  .toString()
 		  );
 		
